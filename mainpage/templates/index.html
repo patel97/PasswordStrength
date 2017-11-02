@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html >
+{% load static %}
+<head>
+  <meta charset="UTF-8">
+  <title>PassStrength</title>
+
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Antic'>
+
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+  
+</head>
+
+<body>
+  <div align="center">
+    <br>
+    <br>
+    <br>
+    <div class="text">Enter a password to test how strong it is</div>
+    <br>
+    <br>
+    <br>
+
+    <form method="POST" action="/">
+      {% csrf_token %}
+      <input name="password" class="button" placeholder="Enter password..." />
+      <br>
+      <br>
+      <button type="submit" class="btn btn-danger">Get Strength</button>
+      <script src='https://use.edgefonts.net/amaranth.js'></script>
+</form>
+
+    </body>
+    </html>

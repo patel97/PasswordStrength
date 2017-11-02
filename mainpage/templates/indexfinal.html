@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html >
+{% load static %}
+<head>
+  <meta charset="UTF-8">
+  <title>PassStrength</title>
+
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Antic'>
+
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+  
+</head>
+<style type="text/css">
+  .label{
+    color: black;
+  }
+</style>
+<body style="width: 100%; overflow: hidden;">
+  <div align="center">
+    <br>
+    <br>
+    <br>
+    <div class="text">Password Strength using SVM</div>
+    <br>
+    <br>
+    <br>
+
+    <form method="POST" action="/">
+      {% csrf_token %}
+      <label>Entered password</label><br>
+      <input name="password" class="button" value="{{value}}" placeholder="Enter password..." />
+      <br>
+      <br>
+      <!-- <button type="submit" class="btn btn-danger">Get Strength</button> -->
+      <script src='https://use.edgefonts.net/amaranth.js'></script>
+</form>
+<div class="row text-center">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+        <h4 style="color: white;">Total Training Data Instances: <span style="color: black;" class="badge">{{ noOfTrains }}</span></a></h4>
+        <h3>The entered password is a</h3>
+          {% if predicted == "Very Weak Password" %}
+                <h3><div class="label label-danger">{{ predicted }}</div></h3>
+          {% endif %}
+
+          {% if predicted == "Weak Password" %}
+                <h3><div class="label label-warning">{{ predicted }}</div></h3>
+          {% endif %}
+
+          {% if predicted == "Strong Password" %}
+                <h3><div class="label label-info">{{ predicted }}</div></h3>
+          {% endif %}
+
+          {% if predicted == "Very Strong Password" %}
+                <h3><div class="label label-success">{{ predicted }}</div></h3>
+          {% endif %}
+          <br>
+          
+        </div><!-- ./col-md-4 -->
+        <div class="col-md-4"></div>
+      </div><!-- ./row -->
+<a type="submit" href='/' class="btn btn-danger">Try Something else (HOME)</a>
+    </body>
+    </html>
